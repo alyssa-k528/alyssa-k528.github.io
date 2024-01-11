@@ -1,0 +1,373 @@
+* { /*to reset the default styles*/
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html { /*default for entire html*/
+    scroll-behavior: smooth; /*to make it scroll smoothly*/
+    font-size: 20px; 
+    font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+    background-color: rgb(255, 242, 247);
+}
+
+body{ 
+    margin: 0px; /*to remove the white space around the body*/
+    opacity: 0;
+
+    /*fades into home page*/
+    /*ease cause animation to start slow, then speed up, then finally slow down again at the end - creates smooth and natural movement*/
+    /*forward means once animation done, element will remain in same style values set in last keyframe - stay at 1 after animation end*/
+    animation: fadeInAnimation 1s ease forwards;
+}
+
+@keyframes fadeInAnimation {
+    to {
+        opacity: 1;
+    }
+}
+
+main {
+    margin-left: 20px; /*to have margin around main stuff*/
+    margin-right: 20px;
+}
+
+/*adding backgrouns for navi bar*/
+.topnav {
+    position: fixed;
+    top: 0; /*to make it stick to the top*/
+    width: 100%;
+    z-index: 100; /*to make it on top of everything*/
+    background-color: rgb(255, 255, 255);
+    opacity:0.85;
+    overflow:hidden;
+}
+
+section{
+    padding-top: 100px; /*to make sure the content is not hidden behind the navi bar*/
+    margin-top: -50px; /*to make sure the content is not hidden behind the navi bar*/
+}
+
+/*center buttons*/
+.topnav ul {
+    padding: 0px;
+    display: flex; /*centers*/
+    margin: 20px;
+    justify-content: space-between;
+    list-style-type: none; /*removing bullet points*/
+    overflow: hidden;
+}
+
+/*styling links inside navi bar*/
+.topnav a {
+    float:left;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none; /*removing underline*/
+    font-size: 18px;
+    font-weight: bold;
+    display: block; /*to make it block*/
+    transition: opacity 0.2s;
+}
+
+/*adding hover effect*/
+.topnav a:hover {
+    opacity:0.5;
+}
+
+/* TODO: do smt for this */
+/*adding active class to highlight current page*/
+.topnav a:active {
+    opacity: 0.2;
+}
+
+.home-page{
+    margin: 90px;
+    text-align: center;
+}
+
+.sprout-me-circle{
+    text-align: center;
+}
+
+.sprout-me{
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+}
+
+#about{ /*using # bc wanna target an id*/
+    width: 800px;
+    margin: 0 auto; /*to center*/
+}
+
+.about-title{
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.intro-and-pic{
+    display: flex; /*align items horizontally*/
+    align-items: center; /*align items vertically*/
+    justify-content: space-between; /*space between the two items*/
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.intro-and-pic p{
+    flex-basis: 70%; /* Allocate 60% of the horizontal space for the text */
+    font-size: 1em; /* Set a suitable font size */
+    color: #333; /* Dark color for the text for readability */
+    line-height: 1.5; /* Space out lines of text for readability */
+}
+
+.intro{
+    flex-basis: 70%; /* Allocate 60% of the horizontal space for the text */
+    color: rbg(0, 0, 0);
+}
+
+.about-me-pic{
+    /* width: 100px;
+    /* display: inline-flex; */
+    /* float: right;
+    margin-left: 80px;
+    margin-left: 50px; */
+    flex-basis: 30%; /* Allocate 40% of the horizontal space for the image */
+    text-align: center; /* Center the image */
+    margin-left: 50px;
+}
+
+.about-me-pic img{
+    /* margin: auto 5px;
+    /* float: right; */
+    /* width: 300px;
+    height: auto; to make sure it doesn't get distorted */
+    max-width: 100%; /* Make sure the image doesn't exceed its parent's width */
+    height: auto; /* Make sure the image doesn't exceed its parent's height */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .intro-and-pic {
+        flex-direction: column; /* Stack items vertically on smaller screens */
+        align-items: center; /* Align items to the center */
+    }
+
+    .intro-and-pic p {
+        margin-right: 0; /* Remove the margin-right in responsive mode */
+    }
+
+    .about-me-pic, .intro-and-pic p {
+        flex-basis: auto; /* Let the image and text take up the necessary space */
+    }
+}
+
+.social-medias{
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.social-media-buttons{
+    text-align: center; /* Center the buttons */
+    padding: 20px; /* Add some spacing around the buttons */
+}
+
+.social-button{
+    display: inline-block; /* Align buttons in a row */
+    margin: 0 10px; /* Spacing between buttons */
+    border-radius: 50%; /* Circular shape */
+    width: 50px; /* Width of the button */
+    height: 50px; /* Height of the button */
+    overflow: hidden; /* Ensures content respects border radius */
+    text-align: center; /* Center the content (icon or image) */
+    line-height: 50px; /* Center the content vertically */
+    background-color: #fff; /* Button background color */
+    box-shadow: 0px 0px 5px #888; /* Optional: adds shadow for depth */
+
+    /*for centering the image*/
+    /* Use the background properties */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Individual classes for different buttons */
+#linkedin.social-button {
+    background-image: url('pics/linkedin_logo.png');
+    /* background-size: cover; to make sure the image doesn't get distorted */
+    background-size: 52px 52px;
+}
+
+#instagram.social-button {
+    background-image: url('pics/instagram_logo.jpg');
+    background-size: 75px 75px; /*width and height*/
+    background-position: center -15px; /*to move the image up a bit*/
+}
+
+#github.social-button {
+    background-image: url('pics/github_logo.jpg');
+    background-size: 140px 70px;
+}
+
+.professional-skillset{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+    color:rgb(40, 40, 41);
+}
+
+.skillset-circles{
+    text-align: center; 
+    padding: 20px;
+}
+
+.systems-circles{
+    text-align: center; 
+    padding: 20px;
+}
+.circle-image{
+    display: inline-block; /* Align buttons in a row */
+    margin: 0 10px; /* Spacing between buttons */
+    width: 40px;
+    height: 40px; /*width and height should be same*/
+    border-radius: 50%; /*to make it a circle*/
+    object-fit: cover; /*to make sure the image doesn't get distorted*/
+}
+.operating-systems-used{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+    color:rgb(40, 40, 41);
+}
+
+.resume{
+    text-align: center;
+}
+
+.resume-text{
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    color:rgb(40, 40, 41);
+}
+
+.fun-fact{
+    font-size: 13px;
+    text-align: center;
+    color:rgb(95, 93, 93);
+}
+
+.projects-page{
+    text-align: center;
+    margin: 90px;
+}
+
+.projects-title{
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    color:rgb(40, 40, 41);
+}
+
+.laila-page{
+    margin: 10px;
+}
+
+.laila-title{
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    color:#333;
+}
+
+/*slide shhow container*/
+.slideshow-container {
+    max-width: 500px;
+    position: relative;
+    margin: auto;
+}
+
+img {
+    width: 100vw;
+    height: 100vh;
+    object-fit: contain; /* This will ensure the whole image fits within the container without cropping */
+}
+
+/*hide images by default*/
+.mySlides {
+    display: none;
+}
+
+/*next and previous buttons*/
+.prev, .next {
+    cursor : pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color:#ddd;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+/*position the next button to the right*/
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+/*when hover, add black bg with little bit see through*/
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+.dot-container{
+    text-align: center;
+    margin-top: -60px; /*move dots*/
+}
+
+/*the dots*/
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover{
+    background-color: black;
+}
+
+/*fading animation*/
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0.4;
+    } to {
+        opacity: 1;
+    }
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+    .prev, .next,.text {font-size: 11px}
+  }

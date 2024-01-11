@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
+
+* { /*to reset the default styles*/
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html { /*default for entire html*/
+    font-size: 20px; 
+    font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+    overflow: hidden;
+}
+
+ /*change font size depending on screen size*/
+/*viewport wdth equals 1% of width of the current viewpoint*/
+/* p{font-size:calc(1rem +1vw);} */
+
+.container {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Intro section */
+#intro {
+    background-size: cover;
+    background-position: top center;
+    position: relative; 
+}
+
+.text{
+    width: 100%;
+    font-size: 4rem;
+    letter-spacing: 8px;
+    border-right: 5px solid;
+    color: black;
+    white-space: nowrap;
+    overflow: hidden;
+    /* animation: 
+        typing 3s steps(14),
+        cursor .5s step-end infinite alternate; */
+}
+
+/*typewriter annimation*/
+/* .anim-typewriter{
+    animation: typewriter 4s steps(44) 1s 1 normal both,
+               blinkTextCursor 500ms steps(44) infinite normal;
+}
+
+@keyframes typewriter {
+    from{width: 0;}
+    to{width: 24em;}
+}
+
+@keyframes blinkTextCurser{
+    from{border-right-color: black;}
+    to{border-right-color: transparent;}
+} */
+
+/* @keyframes cursor {
+    50% { border-color: transparent }
+}
+
+@keyframes typing {
+    from { width: 0}
+} */
+
+code { /*to print the lines in order*/
+    /* display: block; */
+    white-space: pre-wrap;
+}
+/* End Intro section */
