@@ -47,42 +47,93 @@ if(document.querySelector("#intro-page")) {
 
 /*condition used to make sure that the page only tries computing stuff made for that page */
 if(document.querySelector(".main-page .mySlides")) {
-  // for home page
-  let slideIndex = 1;
-  showSlides(slideIndex);
+//   // for home page
+//   let slideIndex = 1;
+//   showSlides(slideIndex);
 
-  // Next/previous controls
-  function plusSlides(n) {
-    showSlides(slideIndex += n);
-  }
+//   // Next/previous controls
+//   function plusSlides(n) {
+//     showSlides(slideIndex += n);
+//   }
 
-  // Thumbnail image controls
-  function currentSlide(n) {
-    showSlides(slideIndex = n);
-  }
+//   // Thumbnail image controls
+//   function currentSlide(n) {
+//     showSlides(slideIndex = n);
+//   }
 
-  function showSlides(n) {
-    let i;
-    let slides = document.getElementsByClassName("mySlides");
-    let dots = document.getElementsByClassName("dot");
+//   function showSlides(n, slideshowClass) {
+//     let i;
+//     let slides = document.getElementsByClassName("mySlides");
+//     let dots = document.getElementsByClassName("dot");
     
-    if (n > slides.length) {
-      slideIndex = 1
+//     if (n > slides.length) {
+//       slideIndex = 1
+//     }
+
+//     if (n < 1) {
+//       slideIndex = slides.length
+//     }
+
+//     for (i = 0; i < slides.length; i++) {
+//       slides[i].style.display = "none";
+//     }
+
+//     for (i = 0; i < dots.length; i++) {
+//       dots[i].className = dots[i].className.replace(" active", "");
+//     }
+    
+//     slides[slideIndex-1].style.display = "block";
+//     dots[slideIndex-1].className += " active";
+//   }
+// }
+
+  document.addEventListener("DOMContentLoaded", function() {
+    initializeSlideshow('.projects-page', 1);
+    initializeSlideshow('.laila-page', 1);
+  });
+  
+  function initializeSlideshow(slideshowClass, startSlide) {
+    let slideshowContainer = document.querySelector(slideshowClass);
+    slideshowContainer.setAttribute("data-slide-index", startSlide);
+    showSlides(startSlide, slideshowClass);
+  }
+  
+  function plusSlides(n, slideshowClass) {
+    let slideshowContainer = document.querySelector(slideshowClass);
+    let slideIndex = parseInt(slideshowContainer.getAttribute("data-slide-index"));
+    showSlides(slideIndex += n, slideshowClass);
+  }
+  
+  function currentSlide(n, slideshowClass) {
+    showSlides(n, slideshowClass);
+  }
+  
+  function showSlides(n, slideshowClass) {
+    let i;
+    let slideshowContainer = document.querySelector(slideshowClass);
+    let slides = slideshowContainer.getElementsByClassName("mySlides");
+    let dots = slideshowContainer.getElementsByClassName("dot");
+    let slideIndex = parseInt(slideshowContainer.getAttribute("data-slide-index"));
+  
+    if (n > slides.length) { 
+      n = 1; 
     }
 
-    if (n < 1) {
-      slideIndex = slides.length
+    if (n < 1) { 
+      n = slides.length; 
     }
-
+    
+    slideshowContainer.setAttribute("data-slide-index", n);
+  
     for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
+      slides[i].style.display = "none";  
     }
-
     for (i = 0; i < dots.length; i++) {
       dots[i].className = dots[i].className.replace(" active", "");
     }
-    
-    slides[slideIndex-1].style.display = "block";
-    dots[slideIndex-1].className += " active";
+  
+    slides[n - 1].style.display = "block";  
+    dots[n - 1].className += " active";
   }
+  
 }
