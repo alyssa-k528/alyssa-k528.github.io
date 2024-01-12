@@ -265,7 +265,7 @@ section{
 }
 
 .projects-page{
-    text-align: center;
+    /* text-align: center; */ /*shifts the slideshow buttons*/
     margin: 90px;
 }
 
@@ -273,6 +273,12 @@ section{
     text-align: center;
     font-size: 22px;
     font-weight: bold;
+    color:rgb(40, 40, 41);
+}
+
+.projects-text{
+    text-align: center;
+    font-size: 18px;
     color:rgb(40, 40, 41);
 }
 
@@ -334,7 +340,7 @@ img {
 
 .dot-container{
     text-align: center;
-    margin-top: -60px; /*move dots*/
+    margin-top: -50px; /*move dots*/
 }
 
 /*the dots*/
