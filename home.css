@@ -126,14 +126,14 @@ section{
 }
 
 .intro-and-pic p{
-    flex-basis: 70%; /* Allocate 60% of the horizontal space for the text */
+    flex-basis: 70%; /* Allocate 70% of the horizontal space for the text */
     font-size: 1em; /* Set a suitable font size */
     color: #333; /* Dark color for the text for readability */
     line-height: 1.5; /* Space out lines of text for readability */
 }
 
 .intro{
-    flex-basis: 70%; /* Allocate 60% of the horizontal space for the text */
+    flex-basis: 70%; /* Allocate 70% of the horizontal space for the text */
     color: rbg(0, 0, 0);
 }
 
@@ -169,9 +169,9 @@ section{
 }
 
 .babe-pic img{
+    float: left;
     max-width: 100%; /* Make sure the image doesn't exceed its parent's width */
     height: auto; /* Make sure the image doesn't exceed its parent's height */
-
 }
 
 /* Responsive adjustments */
