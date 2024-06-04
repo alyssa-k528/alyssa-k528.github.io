@@ -206,19 +206,19 @@ section{
 
 /* Individual classes for different buttons */
 #linkedin.social-button {
-    background-image: url('pics/linkedin_logo.png');
+    background-image: url('pics/socials/linkedin_logo.png');
     /* background-size: cover; to make sure the image doesn't get distorted */
     background-size: 52px 52px;
 }
 
 #instagram.social-button {
-    background-image: url('pics/instagram_logo.jpg');
+    background-image: url('pics/socials/instagram_logo.jpg');
     background-size: 75px 75px; /*width and height*/
     background-position: center -15px; /*to move the image up a bit*/
 }
 
 #github.social-button {
-    background-image: url('pics/github_logo.jpg');
+    background-image: url('pics/socials/github_logo.jpg');
     background-size: 140px 70px;
 }
 
