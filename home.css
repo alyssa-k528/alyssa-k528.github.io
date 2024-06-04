@@ -169,7 +169,6 @@ section{
 }
 
 .babe-pic img{
-    float: left;
     max-width: 100%; /* Make sure the image doesn't exceed its parent's width */
     height: auto; /* Make sure the image doesn't exceed its parent's height */
 }
