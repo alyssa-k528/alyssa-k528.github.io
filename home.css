@@ -268,10 +268,12 @@ section{
 .projects-page{
     /* text-align: center; */ /*shifts the slideshow buttons*/
     display: flex;
-    justify-content: center; /* Center the boxes horizontally */
-    align-items: center; /* Center the boxes vertically */
+    flex-wrap: wrap;
     gap: 20px; /* Space between the boxes */
     height: 55vh; /*from the main-title*/
+    max-width: 1200px; /* Maximum width of the boxes */
+    justify-content: center; /* Center items horizontally */
+    margin: 0 auto;
 }
 
 .projects-main-title{
@@ -294,13 +296,16 @@ section{
     color:rgb(40, 40, 41);
 }
 
-.cmdf_hackathon, .mountain_madness{
+.cmdf_hackathon, .mountain_madness, .maze_game{
     background-color: rgba(255, 255, 255, 0.5); /* White with 50% opacity */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 550px;
+    /* width: 550px; */
+    width: calc(50% - 20px); 
+    /* Adjust width to be 50% minus the gap */
     height: 300px;
+    margin-bottom: 20px; /* Add some space between rows */
 }
 
 .laila-page{
