@@ -88,7 +88,7 @@ if(document.querySelector(".main-page .mySlides")) {
 // }
 
   document.addEventListener("DOMContentLoaded", function() {
-    initializeSlideshow('.projects-page', 1);
+    initializeSlideshow('.crochet-projects', 1);
     initializeSlideshow('.laila-page', 1);
   });
   
