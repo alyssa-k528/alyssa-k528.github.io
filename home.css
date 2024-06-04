@@ -103,8 +103,8 @@ section{
     margin: 0 auto; /*to center*/
 }
 
-.about-title{
-    font-size: 30px;
+.section-title{
+    font-size: 25px;
     font-weight: bold;
     margin-bottom: 20px;
     text-align: center;
@@ -276,13 +276,6 @@ section{
     margin: 0 auto;
 }
 
-.projects-main-title{
-    text-align: center;
-    font-size: 22px;
-    font-weight: bold;
-    color:rgb(40, 40, 41);
-}
-
 .projects-title{
     text-align: center;
     font-size: 20px;
@@ -310,13 +303,6 @@ section{
 
 .laila-page{
     margin: 10px;
-}
-
-.laila-title{
-    text-align: center;
-    font-size: 25px;
-    font-weight: bold;
-    color:#333;
 }
 
 /*slide shhow container*/
