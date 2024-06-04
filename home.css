@@ -143,7 +143,7 @@ section{
     /* float: right;
     margin-left: 80px;
     margin-left: 50px; */
-    flex-basis: 30%; /* Allocate 40% of the horizontal space for the image */
+    flex-basis: 30%; /* Allocate 30% of the horizontal space for the image */
     text-align: center; /* Center the image */
     margin-left: 50px;
 }
@@ -157,6 +157,23 @@ section{
     height: auto; /* Make sure the image doesn't exceed its parent's height */
 }
 
+.babe{
+    flex-basis: 70%; /* Allocate 70% of the horizontal space for the text */
+    color: rbg(0, 0, 0);
+}
+
+.babe-pic{
+    flex-basis: 30%; /* Allocate 30% of the horizontal space for the image */
+    text-align: center; /* Center the image */
+    margin-right: 50px;
+}
+
+.babe-pic img{
+    max-width: 100%; /* Make sure the image doesn't exceed its parent's width */
+    height: auto; /* Make sure the image doesn't exceed its parent's height */
+
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .intro-and-pic {
@@ -168,7 +185,7 @@ section{
         margin-right: 0; /* Remove the margin-right in responsive mode */
     }
 
-    .about-me-pic, .intro-and-pic p {
+    .about-me-pic, .intro-and-pic p , .babe-pic{
         flex-basis: auto; /* Let the image and text take up the necessary space */
     }
 }
