@@ -288,6 +288,10 @@ section{
     color:rgb(95, 93, 93);
 }
 
+#projects {
+    margin-bottom: 50px;
+}
+
 .projects-page{
     /* text-align: center; */ /*shifts the slideshow buttons*/
     display: flex;
@@ -314,7 +318,7 @@ section{
     color:rgb(40, 40, 41);
 }
 
-.cmdf_hackathon, .mountain_madness, .maze_game{
+.cmdf_hackathon, .mountain_madness, .maze_game, .proxy_server, .packet_transmissions{
     background-color: rgba(255, 255, 255, 0.5); /* White with 50% opacity */
     padding: 20px;
     border-radius: 10px;
@@ -327,9 +331,13 @@ section{
 }
 
 .crochet-projects{
-    padding-top:100px;
+    padding-top:500px;
     align-items: center;
 }
+
+/* #laila{
+    margin-top: 50px;
+} */
 
 .laila-page{
     margin: 10px;
