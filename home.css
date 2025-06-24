@@ -126,7 +126,7 @@ ABOUT ME SECTION
 }
 
 .section-title{
-    font-size: 25px;
+    font-size: clamp(18px, 1.5vw, 25px);
     font-weight: bold;
     margin-bottom: 20px;
     text-align: center;
@@ -134,6 +134,7 @@ ABOUT ME SECTION
 
 .sub-title{
     font-size: 20px;
+    font-size: clamp(14px, 1.5vw, 20px);
     font-weight: bold;
     margin-bottom: 20px;
     text-align: center;
@@ -157,6 +158,11 @@ ABOUT ME SECTION
 .intro{
     flex-basis: 70%; /* Allocate 70% of the horizontal space for the text */
     color: rbg(0, 0, 0);
+}
+
+.intro-text{
+    font-size: clamp(12px, 1.2vw, 20px); /* Minimum 12px, preferred 1.5vw, max 20px */
+    color: #333; /* Dark color for the text for readability */
 }
 
 .about-me-pic{
@@ -192,7 +198,7 @@ SOCIAL MEDIA SECTION
 ######################################
 */
 .social-medias{
-    font-size: 25px;
+    font-size: clamp(18px, 1.5vw, 25px);
     font-weight: bold;
     margin-bottom: 15px;
     text-align: center;
@@ -246,7 +252,7 @@ SKILLSET SECTION
 ######################################
 */
 .professional-skillset{
-    font-size: 20px;
+    font-size: clamp(18px, 1.5vw, 25px);
     font-weight: bold;
     margin-bottom: 15px;
     text-align: center;
@@ -271,7 +277,7 @@ SKILLSET SECTION
     object-fit: cover; /*to make sure the image doesn't get distorted*/
 }
 .operating-systems-used{
-    font-size: 20px;
+    font-size: clamp(18px, 1.5vw, 25px);
     font-weight: bold;
     margin-bottom: 15px;
     text-align: center;
@@ -283,14 +289,14 @@ SKILLSET SECTION
 }
 
 .resume-text{
-    font-size: 18px;
+    font-size: clamp(14px, 1.2vw, 18px);
     font-weight: bold;
     text-align: center;
     color:rgb(40, 40, 41);
 }
 
 .fun-fact{
-    font-size: 13px;
+    font-size: clamp(11px, 1.5vw, 13px);
     text-align: center;
     color:rgb(95, 93, 93);
 }
@@ -309,7 +315,7 @@ PROJECTS AND WORK EXPERIENCE SECTION
 } 
 
 .work-date{
-    font-size: 12px;
+    font-size: clamp(10px, 1vw, 12px);
     text-align: center;
     color: rgb(230, 88, 140);
     font-weight: bold;
@@ -330,7 +336,7 @@ PROJECTS AND WORK EXPERIENCE SECTION
 
 .projects-title, .work-title{
     text-align: center;
-    font-size: 20px;
+    font-size: clamp(14px, 2vw, 20px);
     font-weight: bold;
     color:rgb(40, 40, 41);
 }
@@ -338,7 +344,7 @@ PROJECTS AND WORK EXPERIENCE SECTION
 .projects-text, .work-text{
     text-align: center;
     overflow-wrap: break-word; /* Ensures long words/URLs break cleanly */
-    font-size: 16px;
+    font-size: clamp(11px, 1.4vw, 16px);
     color:rgb(40, 40, 41);
 }
 
@@ -349,6 +355,7 @@ PROJECTS AND WORK EXPERIENCE SECTION
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     /*flex grow 1 if needed, shrink 1 if needed and target size is 2 columns with spacing*/
     flex: 1 1 calc(50% - 20px); /* Responsive 2-column layout */
+    /*flex: 1 1 100%; */ /* single full-width column */
     height: auto;
     min-height: 200px;
     box-sizing: border-box;
@@ -466,7 +473,7 @@ TITLE PAGE (INTRO FADE)
 PAGE RESPONSIVENESS
 ######################################
 */
-@media (max-width: 768px) {
+@media (max-width: 768px) { /*tablet and smaller (phone) sizes*/
     .sprout-me {
         width: 50vw;
         max-width: 250px;
@@ -496,6 +503,7 @@ PAGE RESPONSIVENESS
     .projects-page {
         gap: 15px;
     }
+
     .social-button {
         width: 40px;
         height: 40px;
@@ -517,6 +525,6 @@ PAGE RESPONSIVENESS
 
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
-    .prev, .next,.text {font-size: 11px}
+    .prev, .next, .text {font-size: 10px}
   }
 
