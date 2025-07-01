@@ -68,9 +68,10 @@ section{
     float:left;
     color: black;
     text-align: center;
-    padding: 14px 16px;
+    /*padding: 14px 16px;*/
+    padding: clamp(8px, 1.6vw, 14px) 16px; /* responsive vertical padding */
     text-decoration: none; /*removing underline*/
-    font-size: 18px;
+    font-size: clamp(14px, 1.5vw, 18px);
     font-weight: bold;
     display: block; /*to make it block*/
     transition: opacity 0.2s;
