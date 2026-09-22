@@ -41,14 +41,28 @@ document.querySelector('.skip-link').addEventListener('click', event => {
 });
 showPage();
 
-function finishIntro() {
-  intro.hidden = true;
+async function finishIntro() {
+  // Prepare Home underneath the intro, then gently fade the intro away.
+  // Keep the page inactive until the fade finishes so hidden links cannot be clicked.
   site.hidden = false;
-  site.inert = false;
-  document.body.classList.remove('intro-active');
   showPage();
   // A refresh should not restore the scroll position from the previous section.
   window.scrollTo(0, 0);
+
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const fade = intro.animate(
+      [{ opacity: 1 }, { opacity: 0 }],
+      { duration: 700, easing: 'ease-in-out', fill: 'forwards' }
+    );
+    // Still reveal the page if the browser interrupts the animation.
+    try { await fade.finished; } catch { /* The intro can safely close now. */ }
+    intro.hidden = true;
+    fade.cancel();
+  }
+
+  intro.hidden = true;
+  site.inert = false;
+  document.body.classList.remove('intro-active');
 }
 
 // Finish typing before revealing the website; this still totals about five seconds.
