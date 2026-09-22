@@ -1,0 +1,1 @@
+My name is Alyssa Kou and I am currently in my fourth year as a computing science major and criminology minor at Simon Fraser University.

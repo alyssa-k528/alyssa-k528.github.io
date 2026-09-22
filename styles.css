@@ -1,75 +1,577 @@
-@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
-
-* { /*to reset the default styles*/
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+/* SITE COLORS: change these values to update the palette everywhere. */
+:root {
+  --pink: #fff2f7;
+  --ink: #392e34;
+  --muted: #75626c;
+  --accent: #a44066;
+  --line: #ead3dd;
+  --paper: #fffafc;
+  --mono: 'Courier New', Courier, monospace;
 }
 
-html { /*default for entire html*/
-    font-size: 20px; 
-    font-family: 'Courier Prime', 'Courier New', Courier, monospace;
-    overflow: hidden;
+/* BASICS: reset spacing and keep padding inside each element's width. */
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: var(--pink);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 16px;
+  line-height: 1.7;
+}
+[hidden] {
+  display: none !important;
+}
+a {
+  color: inherit;
+  text-underline-offset: 5px;
+}
+a:hover {
+  color: var(--accent);
+}
+button {
+  font: inherit;
+  color: inherit;
+}
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 5px;
+}
+h1, h2, h3, p {
+  margin: 0;
+}
+h1, h2, h3 {
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+/* clamp lets text grow with the screen, but gives it a minimum and maximum size. */
+h1 {
+  font-size: clamp(2.7rem, 5.5vw, 5.5rem);
+  font-weight: normal;
+  letter-spacing: -.075em;
+}
+h1 span, .wordmark span, .footer-name span {
+  color: var(--accent);
+}
+h2 {
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+  font-weight: normal;
+  letter-spacing: -.05em;
+}
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+/* Hide text visually while keeping it available to screen readers. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
- /*change font size depending on screen size*/
-/*viewport wdth equals 1% of width of the current viewpoint*/
-/* p{font-size:calc(1rem +1vw);} */
-
-.container {
-    min-height: 100vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* TYPEWRITER INTRO */
+.intro-active {
+  overflow: hidden;
 }
-
-/* Intro section */
 #intro {
-    background-size: cover;
-    background-position: top center;
-    position: relative; 
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: var(--pink);
+  z-index: 10;
+}
+#msg {
+  font-family: var(--mono);
+  font-size: clamp(.9rem, 2.3vw, 1.4rem);
+  white-space: pre-wrap;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  text-align: center;
+  line-height: 1.8;
+}
+#msg::after {
+  content: '';
+  display: inline-block;
+  height: 1em;
+  border-right: 2px solid var(--accent);
+  vertical-align: middle;
+  margin-left: 3px;
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink { 50% {
+  opacity: 0;
+} }
+
+/* FLOATING HEADER: centered, with space between it and the screen edges. */
+.floating-header {
+  position: fixed;
+  top: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(660px, calc(100% - 32px));
+  padding: 10px 14px 10px 25px;
+  border: 1px solid white;
+  border-radius: 100px;
+  background: rgba(255,250,252,.94);
+  box-shadow: 0 8px 32px #713b5710;
+  backdrop-filter: blur(15px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 5;
+}
+.wordmark {
+  text-decoration: none;
+  font-size: 1.8rem;
+  font-weight: bold;
+  letter-spacing: -.1em;
+}
+.floating-header nav {
+  display: flex;
+  gap: 5px;
+}
+.floating-header nav a {
+  text-decoration: none;
+  padding: 8px 19px;
+  border-radius: 100px;
+  font-size: .9rem;
+}
+.floating-header a[aria-current] {
+  background: #f3dce6;
+  color: var(--accent);
+}
+/* Keyboard users can jump past the navigation. */
+.skip-link {
+  position: fixed;
+  top: 0;
+  left: 16px;
+  transform: translateY(-120%);
+  z-index: 20;
+  background: white;
+  padding: 10px;
+}
+.skip-link:focus {
+  transform: translateY(0);
 }
 
-.text{
-    width: 100%;
-    font-size: 4rem;
-    letter-spacing: 8px;
-    border-right: 5px solid;
-    color: black;
-    white-space: nowrap;
-    overflow: hidden;
-    /* animation: 
-        typing 3s steps(14),
-        cursor .5s step-end infinite alternate; */
+/* PAGE LAYOUT: leave room for the fixed header above every page. */
+main {
+  min-height: calc(100svh - 190px);
+  padding-top: 155px;
+}
+.page {
+  width: min(1100px, calc(100% - 80px));
+  margin: 0 auto;
+  padding-bottom: 80px;
+}
+.eyebrow {
+  color: var(--accent);
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: .13em;
+  margin-bottom: 20px;
 }
 
-/*typewriter annimation*/
-/* .anim-typewriter{
-    animation: typewriter 4s steps(44) 1s 1 normal both,
-               blinkTextCursor 500ms steps(44) infinite normal;
+/* HOME: introduction, biography, and personal details. */
+.hero {
+  display: grid;
+  grid-template-columns: 1.45fr 1fr;
+  gap: 65px;
+  align-items: center;
+  min-height: 470px;
+  padding: 25px 0 70px;
+}
+.welcome {
+  margin: 25px 0 28px;
+  color: var(--muted);
+  font-size: clamp(.95rem, 1.4vw, 1.1rem);
+}
+.text-link {
+  font-size: .88rem;
+  /* Keep the underline light and thin on the work link. */
+  text-decoration-thickness: 1px;
+}
+.hero-photo {
+  padding: 12px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  transform: rotate(4deg);
+  border-radius: 48% 48% 9px 9px;
+  box-shadow: 0 15px 40px #713b5710;
+  max-width: 340px;
+  justify-self: center;
+}
+.hero-photo img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 48% 48% 4px 4px;
+}
+.photo-note {
+  display: block;
+  text-align: center;
+  padding-top: 12px;
+  color: var(--accent);
+  font-size: .8rem;
+}
+.about-layout {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  align-items: center;
+  gap: 65px;
+  border-top: 1px solid var(--line);
+  padding: 65px 0;
+}
+.portrait {
+  border-radius: 100px 100px 8px 8px;
+  width: 230px;
+}
+.prose p {
+  margin-top: 18px;
+}
+.prose ul {
+  padding-left: 22px;
+  margin: 18px 0 0;
+}
+.prose li + li {
+  margin-top: 8px;
+}
+.prose h4 {
+  margin: 22px 0 0;
+  font-size: 1rem;
+}
+.personal-note {
+  background: #f8e5ed;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  display: grid;
+  grid-template-columns: 1fr 190px;
+  align-items: center;
+  gap: 45px;
+  padding: 35px 45px;
+}
+.personal-note p:last-child {
+  margin-top: 20px;
+  max-width: 500px;
+}
+.personal-note img {
+  width: 190px;
+  border-radius: 8px;
+  transform: rotate(3deg);
+}
+.fun-fact {
+  font-size: .85rem;
+  text-align: center;
+  margin-top: 45px;
+  color: var(--muted);
+}
+.fun-fact span {
+  color: var(--accent);
+  margin-right: 10px;
 }
 
-@keyframes typewriter {
-    from{width: 0;}
-    to{width: 24em;}
+/* WORK: one wide column for jobs, two columns for projects on desktop. */
+.page-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 25px;
+  padding: 25px 0 55px;
+}
+.pill-link {
+  display: inline-flex;
+  gap: 8px;
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  padding: 12px 22px;
+  font-size: .85rem;
+  text-decoration: none;
+  white-space: nowrap;
+  background: var(--paper);
+}
+.work-section + .work-section {
+  margin-top: 60px;
+}
+.work-section > h2 {
+  margin-bottom: 25px;
+}
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+#experience-list {
+  grid-template-columns: 1fr;
+}
+.work-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 30px;
+  overflow-wrap: anywhere;
+}
+.work-card h3 {
+  font-size: 1.3rem;
+  font-weight: normal;
+  letter-spacing: -.04em;
+}
+.card-date {
+  color: var(--accent);
+  font-size: .76rem;
+  margin-bottom: 14px;
+}
+.work-card .prose {
+  font-size: .9rem;
+  color: var(--muted);
+}
+.card-link {
+  display: inline-block;
+  margin-top: 25px;
+  font-size: .82rem;
+  color: var(--accent);
 }
 
-@keyframes blinkTextCurser{
-    from{border-right-color: black;}
-    to{border-right-color: transparent;}
-} */
-
-/* @keyframes cursor {
-    50% { border-color: transparent }
+/* LAILA: CSS columns make a Pinterest-style gallery without extra libraries.
+   Photos fill their column width. height:auto keeps their original proportions.
+   Reading order goes down each column, then across to the next column. */
+.gallery-page {
+  width: 66.6667%;
+}
+.gallery-heading {
+  text-align: center;
+  padding: 25px 0 45px;
+}
+.gallery-heading > p:not(.eyebrow) {
+  margin-top: 22px;
+  color: var(--muted);
+}
+.gallery-heading .gallery-hint {
+  font-size: .75rem;
+  margin-top: 10px;
+}
+.gallery {
+  columns: 3;
+  column-gap: 18px;
+}
+.photo-button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0 0 18px;
+  border: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  break-inside: avoid;
+  background: #f0d9e3;
+  cursor: zoom-in;
+}
+.photo-button img {
+  width: 100%;
+  height: auto;
+  transition: transform .25s;
+}
+.photo-button:hover img {
+  transform: scale(1.025);
 }
 
-@keyframes typing {
-    from { width: 0}
-} */
-
-code { /*to print the lines in order*/
-    /* display: block; */
-    white-space: pre-wrap;
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--line);
+  width: min(1100px, calc(100% - 80px));
+  margin: auto;
+  padding: 35px 0 45px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
 }
-/* End Intro section */
+footer p {
+  font-size: .75rem;
+  color: var(--muted);
+  margin-top: 6px;
+}
+.footer-name {
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+}
+footer nav a {
+  font-size: .8rem;
+  text-decoration: none;
+}
+
+/* PHOTO VIEWER: fit the full photo inside the screen without cropping it. */
+dialog {
+  border: 0;
+  background: transparent;
+  color: white;
+  max-width: 96vw;
+  max-height: 96svh;
+  padding: 45px 15px 15px;
+  overflow: auto;
+}
+dialog::backdrop {
+  background: #20141deb;
+  backdrop-filter: blur(7px);
+}
+dialog img {
+  max-height: 76svh;
+  max-width: 88vw;
+  width: auto;
+  object-fit: contain;
+  border-radius: 5px;
+  margin: auto;
+}
+dialog p {
+  text-align: center;
+  font-size: .8rem;
+  margin-top: 12px;
+}
+.close-lightbox {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  border: 0;
+  background: white;
+  color: var(--ink);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.7rem;
+  cursor: pointer;
+}
+body:has(dialog[open]) {
+  overflow: hidden;
+}
+.noscript-message {
+  padding: 40px;
+}
+
+/* TABLETS: reduce large gaps and give the gallery more room. */
+@media (max-width: 900px) {
+  .hero {
+  gap: 30px;
+  min-height: 400px;
+}
+  .about-layout {
+  gap: 35px;
+  grid-template-columns: 180px 1fr;
+}
+  .gallery-page {
+  width: calc(100% - 48px);
+}
+  .personal-note {
+  padding: 30px;
+  gap: 30px;
+}
+}
+
+/* PHONES: stack text/cards, keep two gallery columns, and shrink the header. */
+@media (max-width: 600px) {
+  .floating-header {
+  top: 14px;
+  padding: 8px 9px 8px 18px;
+}
+  .floating-header nav a {
+  padding: 8px 12px;
+  font-size: .8rem;
+}
+  .wordmark {
+  font-size: 1.5rem;
+}
+  main {
+  padding-top: 120px;
+}
+  .page {
+  width: calc(100% - 36px);
+  padding-bottom: 50px;
+}
+  .hero {
+  grid-template-columns: 1fr;
+  gap: 36px;
+  padding: 15px 0 45px;
+  text-align: center;
+}
+  .hero-photo {
+  max-width: 240px;
+}
+  .eyebrow {
+  font-size: .65rem;
+}
+  .about-layout {
+  grid-template-columns: 1fr;
+  padding: 40px 0;
+  gap: 28px;
+}
+  .portrait {
+  width: 180px;
+  justify-self: center;
+}
+  .personal-note {
+  grid-template-columns: 1fr;
+  padding: 25px;
+  gap: 25px;
+}
+  .personal-note img {
+  width: 160px;
+  justify-self: center;
+}
+  .page-heading {
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 15px 0 40px;
+}
+  .card-grid {
+  grid-template-columns: 1fr;
+}
+  .work-card {
+  padding: 24px;
+}
+  .gallery {
+  columns: 2;
+  column-gap: 12px;
+}
+  .photo-button {
+  margin-bottom: 12px;
+  border-radius: 7px;
+}
+  .gallery-heading {
+  padding-top: 15px;
+}
+  footer {
+  width: calc(100% - 36px);
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 20px;
+}
+  footer nav {
+  gap: 20px;
+}
+  .fun-fact span {
+  display: block;
+  margin: 0 0 8px;
+}
+  .prose {
+  font-size: .95rem;
+}
+}
+
+/* Respect people who turn off motion in their device settings. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+  animation: none !important;
+  transition: none !important;
+}
+}

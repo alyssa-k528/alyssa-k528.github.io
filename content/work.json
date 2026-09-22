@@ -1,0 +1,12 @@
+{
+  "experience": [
+    "experience/netgear.md"
+  ],
+  "projects": [
+    "projects/penguin-warriors.md",
+    "projects/most-mountainous-troll.md",
+    "projects/sashimi-run.md",
+    "projects/proxy-server.md",
+    "projects/packet-transmissions.md"
+  ]
+}
