@@ -59,3 +59,4 @@ Reorder or remove entries to change the gallery. Photos read down a column, then
 - **index.html**: page structure, three sections, footer, and photo viewer.
 - **styles.css**: colors and layouts; tablet and phone adjustments are at the bottom.
 - **script.js**: typewriter, tab navigation, Markdown loading, and enlarged photos.
+- **.nojekyll**: keep this empty file. It tells GitHub Pages to serve files unchanged so our JavaScript can read the original Markdown.
